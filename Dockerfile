@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTANER Manel Martinez <manel@nixelsolutions.com>
+MAINTAINER Manel Martinez <manel@nixelsolutions.com>
 
 # Install docker
 RUN wget -qO- https://get.docker.com/ | sh
