@@ -2,10 +2,12 @@ FROM ubuntu:14.04
 
 MAINTAINER Manel Martinez <manel@nixelsolutions.com>
 
+# Install Java
+RUN add-apt-repository ppa:openjdk-r/ppa && apt-get update && apt-get -y install openjdk-8-jdk
+# Install packages
+RUN apt-get update && apt-get install -y wget
 # Install docker
 RUN wget -qO- https://get.docker.com/ | sh
-# Install packages
-RUN apt-get update && apt-get install -y openjdk-8-jdk 
 
 ENV JENKINS_VERSION 1.609.3
 ENV JENKINS_SHA f5ad5f749c759da7e1a18b96be5db974f126b71e
