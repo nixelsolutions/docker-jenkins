@@ -13,7 +13,7 @@ RUN add-apt-repository ppa:openjdk-r/ppa && \
 
 # Install packages
 RUN apt-get update && \
-    apt-get install -y wget
+    apt-get install -y wget curl
 
 # Install docker
 RUN wget -qO- https://get.docker.com/ | sh
