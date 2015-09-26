@@ -5,10 +5,16 @@ MAINTAINER Manel Martinez <manel@nixelsolutions.com>
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install Java
-RUN apt-get update && apt-get -y install add-apt-repository
-RUN add-apt-repository ppa:openjdk-r/ppa && apt-get update && apt-get -y install openjdk-8-jdk
+RUN apt-get update && \
+    apt-get -y install python-software-properties software-properties-common
+RUN add-apt-repository ppa:openjdk-r/ppa && \
+    apt-get update && \
+    apt-get -y install openjdk-8-jdk
+
 # Install packages
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update && \
+    apt-get install -y wget
+
 # Install docker
 RUN wget -qO- https://get.docker.com/ | sh
 
