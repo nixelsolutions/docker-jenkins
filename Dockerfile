@@ -24,6 +24,7 @@ ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_PORT 8080
 
 # Install Jenkins
+RUN mkdir -p /usr/share/jenkins
 RUN curl -fL http://mirrors.jenkins-ci.org/war-stable/$JENKINS_VERSION/jenkins.war -o /usr/share/jenkins/jenkins.war && echo "$JENKINS_SHA /usr/share/jenkins/jenkins.war" | sha1sum -c -
 
 EXPOSE ${JENKINS_PORT}
