@@ -15,13 +15,19 @@ RUN add-apt-repository ppa:openjdk-r/ppa && \
 RUN apt-get update && \
     apt-get install -y wget curl pwgen
 
-# Install docker
-RUN wget -qO- https://get.docker.com/ | sh
-
 ENV JENKINS_VERSION 1.609.3
 ENV JENKINS_SHA f5ad5f749c759da7e1a18b96be5db974f126b71e
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_PORT 8080
+
+ENV DOCKER_COMPOSE_VERSION 1.4.1
+
+# Install docker
+RUN wget -qO- https://get.docker.com/ | sh
+
+# Install docker-compose
+RUN curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+RUN chmod +x /usr/local/bin/docker-compose
 
 # Install Jenkins
 RUN mkdir -p /usr/share/jenkins
