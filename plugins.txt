@@ -3,6 +3,7 @@ authentication-tokens:1.2
 credentials:1.23
 docker-commons:1.2
 docker-build-publish:1.1
+docker-build-step:1.33
 git:2.4.0
 git-client:1.19.0
 git-parameter:0.4.0
