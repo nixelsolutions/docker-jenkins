@@ -4,6 +4,7 @@ set -e
 
 # if `docker run` first argument start with `--` the user is passing jenkins launcher arguments
 if [[ $# -lt 1 ]] || [[ "$1" == "--"* ]]; then
+   /usr/local/bin/plugins.sh /plugins.txt
    exec java $JAVA_OPTS -jar /usr/share/jenkins/jenkins.war $JENKINS_OPTS "$@"
 fi
 
