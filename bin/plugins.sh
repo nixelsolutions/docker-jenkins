@@ -23,7 +23,7 @@ while read spec || [ -n "$spec" ]; do
     [[ ${plugin[0]} =~ ^\s*$ ]] && continue
     [[ -z ${plugin[1]} ]] && plugin[1]="latest"
 
-    if [ -e $REF/${plugin[0]}.jpi ]; then
+    if [ -e $REF/${plugin[0]}.jpi && -e $REF/${plugin[0]}/META-INF/MANIFEST.MF ]; then
       dos2unix $REF/${plugin[0]}/META-INF/MANIFEST.MF
       currentVersion=`grep "Plugin-Version:" $REF/${plugin[0]}/META-INF/MANIFEST.MF | awk '{print $2}'` 2>/dev/null
       if [ ! -z ${currentVersion} ]; then
@@ -32,8 +32,12 @@ while read spec || [ -n "$spec" ]; do
       fi
     fi
 
-    echo "Downloading ${plugin[0]}:${plugin[1]} from ${JENKINS_PLUGIN_DOWNLOAD}/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi"
+    if [ -d $REF/${plugin[0]} ]; then
+      echo "Deleting old version of plugin ${plugin[0]}:${currentVersion} ..."
+      rm -rf $REF/${plugin[0]}
+    fi
 
+    echo "Downloading ${plugin[0]}:${plugin[1]} from ${JENKINS_PLUGIN_DOWNLOAD}/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi"
     curl -sSL -f ${JENKINS_PLUGIN_DOWNLOAD}/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi -o $REF/${plugin[0]}.jpi
     unzip -qqt $REF/${plugin[0]}.jpi
 done  < $1
