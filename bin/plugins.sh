@@ -23,7 +23,7 @@ while read spec || [ -n "$spec" ]; do
     [[ ${plugin[0]} =~ ^\s*$ ]] && continue
     [[ -z ${plugin[1]} ]] && plugin[1]="latest"
 
-    if [ -e $REF/${plugin[0]}.jpi && -e $REF/${plugin[0]}/META-INF/MANIFEST.MF ]; then
+    if [ -e $REF/${plugin[0]}.jpi -a -e $REF/${plugin[0]}/META-INF/MANIFEST.MF ]; then
       dos2unix $REF/${plugin[0]}/META-INF/MANIFEST.MF
       currentVersion=`grep "Plugin-Version:" $REF/${plugin[0]}/META-INF/MANIFEST.MF | awk '{print $2}'` 2>/dev/null
       if [ ! -z ${currentVersion} ]; then
