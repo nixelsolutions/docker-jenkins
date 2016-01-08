@@ -15,3 +15,5 @@ parameterized-trigger:2.29
 rebuild:1.25
 scm-api:0.2
 plain-credentials:1.1
+token-macro:1.12.1
+docker-build-publish:1.1
