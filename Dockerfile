@@ -50,6 +50,7 @@ RUN apt-get install -y nodejs
 
 # Install jq
 RUN curl -sSL ${JQ_DOWNLOAD} > /usr/local/bin/jq
+RUN chmod +x /usr/local/bin/jq
 
 EXPOSE ${JENKINS_PORT}
 
