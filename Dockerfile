@@ -31,7 +31,7 @@ ENV SCRIPTS_GIT_REPO https://github.com/nixelsolutions/scripts.git
 ENV SCRIPTS_PATH ${JENKINS_HOME}/scripts
 ENV AWS_LB_SCRIPT ${SCRIPTS_PATH}/aws/lb/get_aws_instances/get_aws_instances.js
 
-ENV DOCKER_COMPOSE_VERSION 1.4.1
+ENV DOCKER_COMPOSE_VERSION 1.6.2
 
 # Install docker
 RUN wget -qO- https://get.docker.com/ | sh
